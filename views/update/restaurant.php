@@ -11,7 +11,7 @@ $restaurantInfo = databaseController::getRestaurantList();
 ?>
 
 
-<section class="restaurantCreator menuCreator">
+<section class="restaurantCreator menuCreator updateContainer">
 
     <h2>Welcome To The Restaurant Creator</h2>
     <p>From here you can update your restaurants to add groups, categories and menu items to. Simply click the edit button next to the desired field.</p>
@@ -19,11 +19,15 @@ $restaurantInfo = databaseController::getRestaurantList();
     <section class="restaurantInfo">
     <?php foreach($restaurantInfo as $restaurant) {?>
 
-        <article class="restaurants" data-restaurantId="<?php echo $restaurant["rid"]; ?>">
-            <div class="rname"><?php echo $restaurant["rname"]?> <button class="editBtn">Edit</button></div>
-            <div class="rdescription"><?php echo $restaurant["rdescription"]?> <button class="editBtn">Edit</button></div>
+        <article class="restaurants mainParent" data-idType="rid" data-restaurantId="<?php echo $restaurant["rid"]; ?>">
+            <div class="rname mainName"><input rel="rname" type="text" value="<?php echo $restaurant["rname"]?>" /></div>
+            <div class="rdescription mainDescription"><textarea rel="rdescription"><?php echo $restaurant["rdescription"]?></textarea></div>
         </article>
     <?php }?>
     </section>
 
 </section>
+
+<script>
+    new formSubmits();
+</script>

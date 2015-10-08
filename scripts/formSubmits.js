@@ -13,7 +13,17 @@ formSubmits.prototype.bindEvents = function(){
             formSubmits.prototype.saveAndDelegate("add", formSerialized);
             return false;
             //TODO: Add in what page to go to.
-    });
+    })
+
+        .on("blur", ".updateContainer input, .updateContainer textarea", function(){
+            var newText = $(this).val() || $(this).text();
+            var restaurantID = $(this).parents(".mainParent").attr("data-restaurantid");
+            var IDType = $(this).parents(".mainParent").attr("data-idType");
+            var nameOrDescription = $(this).attr("rel");
+            console.log(nameOrDescription);
+            formSubmits.prototype.updateItem(nameOrDescription, "restaurants", newText, restaurantID, IDType);
+        })
+
 };
 
 
@@ -33,13 +43,13 @@ formSubmits.prototype.saveAndDelegate = function(delegate, element){
     })
 };
 
-formSubmits.prototype.updateSelectDropdowns = function(associateID, selectClass){
+formSubmits.prototype.updateItem = function(updateType, updateDB, updateText, updatingID, IDType){
     $.ajax({
         type:'post',
-        url:'/menuCreator/controllers/databaseController.php',
-        data:element,
-        success: function(){
-            //TODO: get id to pass to method, which will return the groups with restaurant name
+        url:'/menuCreator/controllers/updateController.php',
+        data:{"type": updateType, "db":updateDB, "text": updateText, "id":updatingID, "idType":IDType},
+        success: function(data){
+            console.log(data)
         }
     })
 };

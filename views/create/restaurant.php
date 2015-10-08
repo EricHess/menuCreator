@@ -8,7 +8,6 @@
 
 //Name of Restaurant
 //Description of Restaurant
-
 ?>
 
 <section class="restaurantCreator menuCreator">

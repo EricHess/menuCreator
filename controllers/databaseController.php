@@ -19,8 +19,10 @@ if(!empty($_POST['creationType'])){
 
 class databaseController {
 
+
+
     public static function connectToDatabase(){
-        $sql = mysqli_connect('localhost','ehess84_menu','slamclam!','ehess84_menucreator');
+        $sql = mysqli_connect('localhost','ehess84_menu','slamclam!','ehess84_ivars');
         return $sql;
     }
 
@@ -43,7 +45,7 @@ class databaseController {
 
     public static function getRestaurantList(){
         $connect = databaseController::connectToDatabase();
-        $sql = "SELECT * from ehess84_menucreator.restaurants";
+        $sql = "SELECT * from ehess84_ivars.restaurants";
         $arr = array();
         $result = mysqli_query($connect,$sql);
         while($row = mysqli_fetch_assoc($result)) {
@@ -54,7 +56,7 @@ class databaseController {
 
     public static function getGroupList(){
         $connect = databaseController::connectToDatabase();
-        $sql = "SELECT * from ehess84_menucreator.menugroup";
+        $sql = "SELECT * from ehess84_ivars.menugroup";
         $arr = array();
         $result = mysqli_query($connect,$sql);
         while($row = mysqli_fetch_assoc($result)) {
@@ -66,7 +68,7 @@ class databaseController {
 
     public static function getGroupListByRestaurantId($restaurantID){
         $connect = databaseController::connectToDatabase();
-        $sql = "SELECT * from ehess84_menucreator.menugroup WHERE restaurantassociation =".$restaurantID;
+        $sql = "SELECT * from ehess84_ivars.menugroup WHERE restaurantassociation =".$restaurantID;
         $arr = array();
         $result = mysqli_query($connect,$sql);
         while($row = mysqli_fetch_assoc($result)) {
@@ -78,7 +80,7 @@ class databaseController {
 
     public static function getCategoryList(){
         $connect = databaseController::connectToDatabase();
-        $sql = "SELECT * from ehess84_menucreator.menucategory";
+        $sql = "SELECT * from ehess84_ivars.menucategory";
         $arr = array();
         $result = mysqli_query($connect,$sql);
         while($row = mysqli_fetch_assoc($result)) {
@@ -91,7 +93,7 @@ class databaseController {
 
     public static function getCategoryListByRestaurantId($restaurantID){
         $connect = databaseController::connectToDatabase();
-        $sql = "SELECT * from ehess84_menucreator.menucategory WHERE restaurantassociation =".$restaurantID;
+        $sql = "SELECT * from ehess84_ivars.menucategory WHERE restaurantassociation =".$restaurantID;
         $arr = array();
         $result = mysqli_query($connect,$sql);
         while($row = mysqli_fetch_assoc($result)) {
@@ -103,7 +105,7 @@ class databaseController {
 
     public static function getItemList(){
         $connect = databaseController::connectToDatabase();
-        $sql = "SELECT * from ehess84_menucreator.menuitem";
+        $sql = "SELECT * from ehess84_ivars.menuitem";
         $arr = array();
         $result = mysqli_query($connect,$sql);
         while($row = mysqli_fetch_assoc($result)) {
@@ -116,7 +118,7 @@ class databaseController {
 
     public static function getItemListByRestaurantId($restaurantID){
         $connect = databaseController::connectToDatabase();
-        $sql = "SELECT * from ehess84_menucreator.menuitem WHERE restaurantassociation =".$restaurantID;
+        $sql = "SELECT * from ehess84_ivars.menuitem WHERE restaurantassociation =".$restaurantID;
         $arr = array();
         $result = mysqli_query($connect,$sql);
         while($row = mysqli_fetch_assoc($result)) {

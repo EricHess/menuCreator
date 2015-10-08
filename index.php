@@ -6,6 +6,7 @@
  * Time: 11:03 AM
  */
 
+include('./config/config.php');
 require('./controllers/urlController.php');
 require('./controllers/pageController.php');
 require('./controllers/databaseController.php');
@@ -22,7 +23,6 @@ require('./controllers/databaseController.php');
 </head>
 
 <body>
-
 <nav>
 <h2>Add New Items</h2>
     <a href="/menuCreator/create/restaurant">+ Add A Restaurant</a>
