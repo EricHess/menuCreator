@@ -9,6 +9,7 @@
 require("databaseController.php");
 
 updateController::updateItem($_POST);
+print_r($_POST);
 
 class updateController {
 

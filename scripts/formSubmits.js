@@ -17,11 +17,11 @@ formSubmits.prototype.bindEvents = function(){
 
         .on("blur", ".updateContainer input, .updateContainer textarea", function(){
             var newText = $(this).val() || $(this).text();
-            var restaurantID = $(this).parents(".mainParent").attr("data-restaurantid");
+            var restaurantID = $(this).parents(".mainParent").attr("data-neededid");
             var IDType = $(this).parents(".mainParent").attr("data-idType");
+            var dbName = $(this).parents(".mainParent").attr("data-dbName");
             var nameOrDescription = $(this).attr("rel");
-            console.log(nameOrDescription);
-            formSubmits.prototype.updateItem(nameOrDescription, "restaurants", newText, restaurantID, IDType);
+            formSubmits.prototype.updateItem(nameOrDescription, dbName, newText, restaurantID, IDType);
         })
 
 };

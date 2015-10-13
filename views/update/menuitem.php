@@ -18,7 +18,7 @@ $restaurantInfo = databaseController::getRestaurantList();
     <h2>Welcome To The Restaurant Creator</h2>
     <p>From here you can update your categories to add menu items to. Simply click the edit button next to the desired field.</p>
 
-    <section class="restaurantInfo">
+    <section class="restaurantInfo menuCreator updateContainer">
         <?php foreach($restaurantInfo as $restaurant) {
             $restaurantName = strtolower(str_replace(" ", "-", $restaurant["rname"]));
 
@@ -26,15 +26,20 @@ $restaurantInfo = databaseController::getRestaurantList();
             echo $restaurant["rname"]." Items";
             echo '<article class="'.$restaurantName.'">';
 
-            foreach($itemGroups as $itemGroup){
-                echo '<div class="iname">'.$itemGroup["iname"].'<button class="editBtn">Edit</button></div>';
-                echo '<div class="idesc">'.$itemGroup["idescription"].'<button class="editBtn">Edit</button></div>';
-                echo '<div class="iprice">'.$itemGroup["iprice"].'<button class="editBtn">Edit</button></div>';
-                echo '<hr />';
-            }
+            foreach($itemGroups as $itemGroup){?>
+                <article class="restaurants mainParent"  data-dbName="menuitem"  data-idType="iid" data-neededId="<?php echo $itemGroup["iid"]; ?>">
+            <div class="iname mainName"><input rel="iname" type="text" value="<?php echo $itemGroup["iname"]?>" /></div>
+            <div class="idescription mainDescription"><textarea rel="idescription"><?php echo $itemGroup["idescription"]?></textarea></div>
+            <div class="iprice mainDescription"><input type="text" rel="iprice" value="<?php echo $itemGroup["iprice"]?>" /></div>
+            </article>
+        <?php }
 
-            echo '</article>';
+        echo '</article>';
         }?>
     </section>
 
 </section>
+
+<script>
+    new formSubmits();
+</script>

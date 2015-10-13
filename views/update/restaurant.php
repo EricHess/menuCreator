@@ -19,7 +19,7 @@ $restaurantInfo = databaseController::getRestaurantList();
     <section class="restaurantInfo">
     <?php foreach($restaurantInfo as $restaurant) {?>
 
-        <article class="restaurants mainParent" data-idType="rid" data-restaurantId="<?php echo $restaurant["rid"]; ?>">
+        <article class="restaurants mainParent" data-dbName="restaurants" data-idType="rid" data-neededId="<?php echo $restaurant["rid"]; ?>">
             <div class="rname mainName"><input rel="rname" type="text" value="<?php echo $restaurant["rname"]?>" /></div>
             <div class="rdescription mainDescription"><textarea rel="rdescription"><?php echo $restaurant["rdescription"]?></textarea></div>
         </article>

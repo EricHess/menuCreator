@@ -18,7 +18,7 @@ $restaurantInfo = databaseController::getRestaurantList();
     <h2>Welcome To The Restaurant Creator</h2>
     <p>From here you can update your categories to add menu items to. Simply click the edit button next to the desired field.</p>
 
-    <section class="restaurantInfo">
+    <section class="restaurantInfo menuCreator updateContainer">
         <?php foreach($restaurantInfo as $restaurant) {
             $restaurantName = strtolower(str_replace(" ", "-", $restaurant["rname"]));
 
@@ -26,14 +26,19 @@ $restaurantInfo = databaseController::getRestaurantList();
             echo $restaurant["rname"]." Categories";
             echo '<article class="'.$restaurantName.'">';
 
-            foreach($catGroups as $catGroup){
-                echo '<div class="cname">'.$catGroup["cname"].'<button class="editBtn">Edit</button></div>';
-                echo '<div class="cdesc">'.$catGroup["cdescription"].'<button class="editBtn">Edit</button></div>';
-                echo '<hr />';
-            }
+            foreach($catGroups as $catGroup){ ?>
+                <article class="restaurants mainParent"  data-dbName="menucategory"  data-idType="cid" data-neededId="<?php echo $catGroup["cid"]; ?>">
+                    <div class="cname mainName"><input rel="cname" type="text" value="<?php echo $catGroup["cname"]?>" /></div>
+                    <div class="cdescription mainDescription"><textarea rel="cdescription"><?php echo $catGroup["cdescription"]?></textarea></div>
+                </article>
+            <?php }
 
             echo '</article>';
         }?>
     </section>
 
 </section>
+
+<script>
+    new formSubmits();
+</script>
