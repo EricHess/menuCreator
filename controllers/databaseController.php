@@ -103,6 +103,18 @@ class databaseController {
     }
 
 
+    public static function getCategoryListByGroupId($groupID){
+        $connect = databaseController::connectToDatabase();
+        $sql = "SELECT * from ehess84_ivars.menucategory WHERE groupassociation =".$groupID;
+        $arr = array();
+        $result = mysqli_query($connect,$sql);
+        while($row = mysqli_fetch_assoc($result)) {
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
+
     public static function getItemList(){
         $connect = databaseController::connectToDatabase();
         $sql = "SELECT * from ehess84_ivars.menuitem";
@@ -118,7 +130,19 @@ class databaseController {
 
     public static function getItemListByRestaurantId($restaurantID){
         $connect = databaseController::connectToDatabase();
-        $sql = "SELECT * from ehess84_ivars.menuitem WHERE restaurantassociation =".$restaurantID;
+        $sql = "SELECT * from ehess84_ivars.menuitem WHERE restaurantassociation =".$restaurantID." ORDER BY ehess84_ivars.menuitem.item_order DESC ";
+        $arr = array();
+        $result = mysqli_query($connect,$sql);
+        while($row = mysqli_fetch_assoc($result)) {
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
+
+    public static function getItemListByCategoryId($categoryID){
+        $connect = databaseController::connectToDatabase();
+        $sql = "SELECT * from ehess84_ivars.menuitem WHERE categoryassociation =".$categoryID." ORDER BY ehess84_ivars.menuitem.item_order DESC ";
         $arr = array();
         $result = mysqli_query($connect,$sql);
         while($row = mysqli_fetch_assoc($result)) {

@@ -35,11 +35,10 @@ require('./controllers/databaseController.php');
     <a href="/menuCreator/update/menucategory">+ Update A Menu Category (Appetizer, Entree, etc..)</a>
     <a href="/menuCreator/update/menuitem">+ Update A Menu Item</a>
 
-<!--    <h2>Recently Updated Items</h2>-->
-<!--    <a href="#">+ Restaurant</a>-->
-<!--    <a href="#">+ Menu Group (Lunch, Dinner, etc..)</a>-->
-<!--    <a href="#">+ Menu Category (Appetizer, Entree, etc..)</a>-->
-<!--    <a href="#">+ Menu Item</a>-->
+ORDER ITEMS<br />
+    DELETE ITEMS<br />
+    HANDLE MULTIPLE PRICES
+
 </nav>
 
 <?php
