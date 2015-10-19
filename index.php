@@ -35,8 +35,6 @@ require('./controllers/databaseController.php');
     <a href="/menuCreator/update/menucategory">+ Update A Menu Category (Appetizer, Entree, etc..)</a>
     <a href="/menuCreator/update/menuitem">+ Update A Menu Item</a>
 
-ORDER ITEMS<br />
-    DELETE ITEMS<br />
     HANDLE MULTIPLE PRICES
 
 </nav>

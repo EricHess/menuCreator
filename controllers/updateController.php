@@ -9,7 +9,6 @@
 require("databaseController.php");
 
 updateController::updateItem($_POST);
-print_r($_POST);
 
 class updateController {
 
@@ -22,7 +21,6 @@ class updateController {
         $id = mysqli_real_escape_string($connect, $updatePackage['id']);
         $idType = mysqli_real_escape_string($connect, $updatePackage['idType']);
         $sqlStatement = "UPDATE ".$db." SET ".$type."='".$text."' WHERE ".$idType."=".$id;
-        echo $sqlStatement;
         mysqli_query($connect,$sqlStatement);
 
     }

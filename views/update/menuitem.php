@@ -53,13 +53,19 @@ $restaurantInfo = databaseController::getRestaurantList();
                         echo "<article data-catID='".$catID."'>";
                             echo "<strong>".$groupCategory['cname']."</strong><br />";
                             //SPIT OUT EACH MENU ITEM
-                            foreach($menuItems as $menuItem){?>
+                            foreach($menuItems as $menuItem){
+                                $menuItem["activeStatus"] == 1 ? $activeStatus = "active" : $activeStatus = "inactive";
 
-                                <article class="restaurants mainParent" data-groupID="<?php echo $menuItem["groupassociation"]?>" data-restaurantID="<?php echo $menuItem["restaurantassociation"]?>" data-categoryID="<?php echo $menuItem["categoryassociation"]?>" data-dbName="menuitem"  data-idType="iid" data-neededId="<?php echo $menuItem["iid"]; ?>">
+                                ?>
+
+
+
+                                <article class="restaurants mainParent <?php echo $activeStatus; ?>" data-groupID="<?php echo $menuItem["groupassociation"]?>" data-restaurantID="<?php echo $menuItem["restaurantassociation"]?>" data-categoryID="<?php echo $menuItem["categoryassociation"]?>" data-dbName="menuitem"  data-idType="iid" data-neededId="<?php echo $menuItem["iid"]; ?>">
                                     <div class="iname mainName">Item Name: <input rel="iname" type="text" value="<?php echo $menuItem["iname"]?>" /></div>
                                     <div class="idescription mainDescription">Item Description: <textarea rel="idescription"><?php echo $menuItem["idescription"]?></textarea></div>
                                     <div class="iprice mainDescription">Item Price: <input type="text" rel="iprice" value="<?php echo $menuItem["iprice"]?>" /></div>
                                     <div class="item_order mainDescription">Item Order: <input type="text" rel="item_order" value="<?php echo $menuItem["item_order"]?>" /></div>
+                                    <div class="deactivate">Active? <input  rel="activeStatus" <?php if($menuItem["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
                                 </article>
 
                             <?php } ?>

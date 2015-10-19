@@ -15,13 +15,25 @@ formSubmits.prototype.bindEvents = function(){
             //TODO: Add in what page to go to.
     })
 
-        .on("blur", ".updateContainer input, .updateContainer textarea", function(){
+        .on("blur", ".updateContainer input[type='text'], .updateContainer textarea", function(){
             var newText = $(this).val() || $(this).text();
             var restaurantID = $(this).parents(".mainParent").attr("data-neededid");
             var IDType = $(this).parents(".mainParent").attr("data-idType");
             var dbName = $(this).parents(".mainParent").attr("data-dbName");
             var nameOrDescription = $(this).attr("rel");
             formSubmits.prototype.updateItem(nameOrDescription, dbName, newText, restaurantID, IDType);
+        })
+
+        .on("click", ".updateContainer input[type='checkbox']", function(){
+            var restaurantID = $(this).parents(".mainParent").attr("data-neededid");
+            var IDType = $(this).parents(".mainParent").attr("data-idType");
+            var dbName = $(this).parents(".mainParent").attr("data-dbName");
+            var nameOrDescription = $(this).attr("rel");
+            var _this = this;
+
+            $(this)[0].checked ?
+                formSubmits.prototype.updateItem(nameOrDescription, dbName, 1, restaurantID, IDType)
+            : formSubmits.prototype.updateItem(nameOrDescription, dbName, 0, restaurantID, IDType);
         })
 
 };
