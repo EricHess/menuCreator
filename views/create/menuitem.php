@@ -49,11 +49,8 @@ $categoryInfo = databaseController::getCategoryList();
         <label for="menuItemName">Menu Item Description: </label>
         <textarea cols="50" rows="15" name="menuItemDescription" placeholder="Enter Menu Item Description Here"></textarea>
         <br />
-        <label for="pricingOption1">Price Or Pricing Options</label>
-        <input type="text" name="pricingOption1" id="pricingOption1" placeholder="Enter Price Text" />
-        <input type="text" name="pricingOption2" id="pricingOption2" placeholder="Enter Price Text" />
-        <input type="text" name="pricingOption3" id="pricingOption3" placeholder="Enter Price Text" />
-        <input type="text" name="pricingOption4" id="pricingOption4" placeholder="Enter Price Text" /><br />
+        <label for="pricingOption1">Price Or Pricing Options (If multiple, separate by commas)</label>
+        <input type="text" name="pricingOption" id="pricingOption1" placeholder="Enter Price Text" />
         <input class="savemenuItemAndClose" type="submit" value="Save Menu Item And Close"/>
         <input class="savemenuItemAndAdd" type="submit" value="Save Menu Item And Add Another"/>
 

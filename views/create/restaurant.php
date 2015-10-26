@@ -6,8 +6,6 @@
  * Time: 11:38 AM
  */
 
-//Name of Restaurant
-//Description of Restaurant
 ?>
 
 <section class="restaurantCreator menuCreator">
