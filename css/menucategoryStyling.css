@@ -1,0 +1,14 @@
+.restaurantInfo.menuCreator.updateContainer{
+    display:flex;
+}
+
+article.restaurantCategories {
+    padding: 2rem;
+    border: 1px solid;
+    margin: 5px;
+}
+
+article.restaurants.mainParent {
+    padding: 40px 0;
+    border-bottom: 1px solid;
+}

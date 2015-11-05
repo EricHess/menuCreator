@@ -10,6 +10,7 @@ $restaurantInfo = databaseController::getRestaurantList();
 //TODO: Create edit functionality
 ?>
 
+<link href="/menuCreator/css/restaurantStyling.css" rel="stylesheet" />
 
 <section class="restaurantCreator menuCreator updateContainer">
 
@@ -20,8 +21,11 @@ $restaurantInfo = databaseController::getRestaurantList();
     <?php foreach($restaurantInfo as $restaurant) {?>
 
         <article class="restaurants mainParent" data-dbName="restaurants" data-idType="rid" data-neededId="<?php echo $restaurant["rid"]; ?>">
+            <h2><?php echo $restaurant["rname"]?></h2>
             <div class="rname mainName"><input rel="rname" type="text" value="<?php echo $restaurant["rname"]?>" /></div>
             <div class="rdescription mainDescription"><textarea rel="rdescription"><?php echo $restaurant["rdescription"]?></textarea></div>
+            <div class="deactivate">Active? <input  rel="activeStatus" <?php if($restaurant["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
+
         </article>
     <?php }?>
     </section>

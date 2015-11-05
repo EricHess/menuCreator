@@ -12,6 +12,8 @@ $restaurantInfo = databaseController::getRestaurantList();
 //TODO: CLick on restaurant name first and then refresh the section with that restaurants groups
 ?>
 
+<link href="/menuCreator/css/menucategoryStyling.css" rel="stylesheet" />
+
 
 <section class="restaurantCreator menuCreator">
 
@@ -23,13 +25,15 @@ $restaurantInfo = databaseController::getRestaurantList();
             $restaurantName = strtolower(str_replace(" ", "-", $restaurant["rname"]));
 
             $catGroups = databaseController::getCategoryListByRestaurantId($restaurant["rid"]);
-            echo $restaurant["rname"]." Categories";
-            echo '<article class="'.$restaurantName.'">';
 
+            echo '<article class="restaurantCategories '.$restaurantName.'">';
+            echo $restaurant["rname"]." Categories";
             foreach($catGroups as $catGroup){ ?>
                 <article class="restaurants mainParent"  data-dbName="menucategory"  data-idType="cid" data-neededId="<?php echo $catGroup["cid"]; ?>">
                     <div class="cname mainName"><input rel="cname" type="text" value="<?php echo $catGroup["cname"]?>" /></div>
                     <div class="cdescription mainDescription"><textarea rel="cdescription"><?php echo $catGroup["cdescription"]?></textarea></div>
+                    <div class="deactivate">Active? <input  rel="activeStatus" <?php if($catGroup["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
+
                 </article>
             <?php }
 

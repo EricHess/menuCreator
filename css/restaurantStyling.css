@@ -1,0 +1,9 @@
+.restaurantInfo{
+    display:flex;
+}
+
+article.restaurants.mainParent {
+    padding: 2rem;
+    border: 1px solid;
+    margin: 5px;
+}

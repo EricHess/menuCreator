@@ -12,19 +12,22 @@ $restaurantInfo = databaseController::getRestaurantList();
 //TODO: CLick on restaurant name first and then refresh the section with that restaurants groups
 ?>
 
+<link href="/menuCreator/css/menuitemStyling.css" rel="stylesheet" />
 
 <section class="restaurantCreator menuCreator">
 
     <h2>Welcome To The Restaurant Creator</h2>
     <p>From here you can update your categories to add menu items to. Simply click the edit button next to the desired field.</p>
 
+    Pick Your Restaurant
+    <select class="restaurantSep">
+        <?php foreach($restaurantInfo as $restaurant) {
+            echo '<option value='.$restaurant["rid"].'>'.$restaurant["rname"].'</option>';
+        }; ?>
+    </select>
+
+
     <section class="restaurantInfo menuCreator updateContainer">
-        Pick Your Restaurant
-        <select class="restaurantSep">
-            <?php foreach($restaurantInfo as $restaurant) {
-                echo '<option value='.$restaurant["rid"].'>'.$restaurant["rname"].'</option>';
-            }; ?>
-        </select>
 
         <!-- TODO: add drop downs for each resaurant list of category and each category list of groups-->
 
@@ -35,9 +38,10 @@ $restaurantInfo = databaseController::getRestaurantList();
             $restaurantName = strtolower(str_replace(" ", "-", $restaurant["rname"]));
 
             $restGroups = databaseController::getGroupListByRestaurantId($restaurant["rid"]);
-            echo $restaurant["rname"]." Items";
+
             //NEED TO SEPARATE OUT BY CATEGORY WITHIN RESTAURANT
-            echo '<article class="'.$restaurantName.'">';
+            echo '<article class="restaurantItems '.$restaurantName.'">';
+            echo $restaurant["rname"]." Items";
             //SPIT OUT EACH GROUP
             foreach($restGroups as $restGroup){
                 $groupID=$restGroup["gid"];
@@ -58,8 +62,6 @@ $restaurantInfo = databaseController::getRestaurantList();
 
                                 ?>
 
-
-
                                 <article class="restaurants mainParent <?php echo $activeStatus; ?>" data-groupID="<?php echo $menuItem["groupassociation"]?>" data-restaurantID="<?php echo $menuItem["restaurantassociation"]?>" data-categoryID="<?php echo $menuItem["categoryassociation"]?>" data-dbName="menuitem"  data-idType="iid" data-neededId="<?php echo $menuItem["iid"]; ?>">
                                     <div class="iname mainName">Item Name: <input rel="iname" type="text" value="<?php echo $menuItem["iname"]?>" /></div>
                                     <div class="idescription mainDescription">Item Description: <textarea rel="idescription"><?php echo $menuItem["idescription"]?></textarea></div>
@@ -75,7 +77,7 @@ $restaurantInfo = databaseController::getRestaurantList();
 
                 echo "</article>";
             }
-
+            echo "</article>";
         }?>
     </section>
 
