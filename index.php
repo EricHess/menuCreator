@@ -27,20 +27,21 @@ require('./controllers/databaseController.php');
 
 <body>
 <nav class="mainSiteNav">
-    <h2 class="addNew">Add New Items</h2>
-    <nav class="addNew navrollup">
-        <a href="/menuCreator/create/restaurant">+ Add A Restaurant</a>
-        <a href="/menuCreator/create/menugroup">+ Add A Menu Group (Lunch, Dinner, etc..)</a>
-        <a href="/menuCreator/create/menucategory">+ Add A Menu Category (Appetizer, Entree, etc..)</a>
-        <a href="/menuCreator/create/menuitem">+ Add A Menu Item</a>
-    </nav>
+    <h2 class="addNew" data-itemToShow="addNew">Add New Items</h2>
+    <h2 class="updateItem" data-itemToShow="updateItem">Update Existing Items</h2>
 
-    <h2 class="updateItem">Update Existing Items</h2>
     <nav class="updateItem navrollup">
         <a href="/menuCreator/update/restaurant">+ Update A Restaurant</a>
         <a href="/menuCreator/update/menugroup">+ Update A Menu Group (Lunch, Dinner, etc..)</a>
         <a href="/menuCreator/update/menucategory">+ Update A Menu Category (Appetizer, Entree, etc..)</a>
         <a href="/menuCreator/update/menuitem">+ Update A Menu Item</a>
+    </nav>
+
+    <nav class="addNew navrollup">
+        <a href="/menuCreator/create/restaurant">+ Add A Restaurant</a>
+        <a href="/menuCreator/create/menugroup">+ Add A Menu Group (Lunch, Dinner, etc..)</a>
+        <a href="/menuCreator/create/menucategory">+ Add A Menu Category (Appetizer, Entree, etc..)</a>
+        <a href="/menuCreator/create/menuitem">+ Add A Menu Item</a>
     </nav>
 </nav>
 

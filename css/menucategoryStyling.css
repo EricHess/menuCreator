@@ -12,3 +12,7 @@ article.restaurants.mainParent {
     padding: 40px 0;
     border-bottom: 1px solid;
 }
+
+label[for="associatedGroupName"],#associatedGroupName, #associatedGroupName option{
+    display:none;
+}

@@ -6,9 +6,16 @@ article.restaurantItems {
     padding: 2rem;
     border: 1px solid;
     margin: 5px;
+    display:none;
 }
 
 article.restaurants.mainParent {
     padding: 40px 0;
     border-bottom: 1px solid;
+}
+
+.restaurantGroup,
+label[for="associatedGroupName"],#associatedGroupName, #associatedGroupName option,
+label[for="associatedCategoryName"],#associatedCategoryName, #associatedCategoryName option{
+    display:none;
 }

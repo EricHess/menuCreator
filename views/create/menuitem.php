@@ -11,6 +11,8 @@ $groupInfo = databaseController::getGroupList();
 $categoryInfo = databaseController::getCategoryList();
 ?>
 
+
+<link href="/menuCreator/css/menuitemStyling.css" rel="stylesheet" />
 <section class="menuItemCreator menuCreator">
 
     <h2>Welcome To The Restaurant Creator</h2>
@@ -36,7 +38,7 @@ $categoryInfo = databaseController::getCategoryList();
             }?>
         </select>
 
-        <label for="associatedGroupName">Associated Category Name: </label>
+        <label for="associatedCategoryName">Associated Category Name: </label>
         <select id="associatedCategoryName" class="associatedCategoryName" name="associatedCategoryName">
             <option value="">Select A Category...</option>
             <?php foreach($categoryInfo as $categories){

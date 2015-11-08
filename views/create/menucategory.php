@@ -10,6 +10,7 @@ $restaurantInfo = databaseController::getRestaurantList();
 $groupInfo = databaseController::getGroupList();
 ?>
 
+<link href="/menuCreator/css/menucategoryStyling.css" rel="stylesheet" />
 <section class="menuCategoryCreator  menuCreator">
 
     <h2>Welcome To The Restaurant Creator</h2>
@@ -31,7 +32,6 @@ $groupInfo = databaseController::getGroupList();
         <select id="associatedGroupName" class="associatedGroupName" name="associatedGroupName">
             <option value="">Select A Group...</option>
             <?php foreach($groupInfo as $groups){
-                print_r($groups);
                 echo '<option data-restaurantassociation="'.$groups["restaurantassociation"].'" value="'.$groups["gid"].'">'.$groups["gname"].'</option>';
             }?>
         </select>

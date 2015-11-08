@@ -7,6 +7,8 @@
  */
 
 $restaurantInfo = databaseController::getRestaurantList();
+$groupInfo = databaseController::getGroupList();
+$categoryInfo = databaseController::getCategoryList();
 //TODO: Create edit functionality
 //TODO: Filter by restaurant
 //TODO: CLick on restaurant name first and then refresh the section with that restaurants groups
@@ -19,12 +21,28 @@ $restaurantInfo = databaseController::getRestaurantList();
     <h2>Welcome To The Restaurant Creator</h2>
     <p>From here you can update your categories to add menu items to. Simply click the edit button next to the desired field.</p>
 
-    Pick Your Restaurant
     <select class="restaurantSep">
+        <option>Select A Restaurant...</option>
         <?php foreach($restaurantInfo as $restaurant) {
             echo '<option value='.$restaurant["rid"].'>'.$restaurant["rname"].'</option>';
         }; ?>
     </select>
+
+    <select class="groupSep">
+        <option>Select A Group...</option>
+        <?php foreach($groupInfo as $group) {
+            echo '<option value='.$group["gid"].'>'.$group["gname"].'</option>';
+        }; ?>
+    </select>
+
+
+    <select class="categorySep">
+        <option>Select A Category...</option>
+        <?php foreach($categoryInfo as $category) {
+            echo '<option value='.$category["cid"].'>'.$category["cname"].'</option>';
+        }; ?>
+    </select>
+
 
 
     <section class="restaurantInfo menuCreator updateContainer">
@@ -40,14 +58,14 @@ $restaurantInfo = databaseController::getRestaurantList();
             $restGroups = databaseController::getGroupListByRestaurantId($restaurant["rid"]);
 
             //NEED TO SEPARATE OUT BY CATEGORY WITHIN RESTAURANT
-            echo '<article class="restaurantItems '.$restaurantName.'">';
-            echo $restaurant["rname"]." Items";
+            echo '<article data-id="'.$restaurant["rid"].'" class="restaurantItems '.$restaurantName.'">';
+            echo '<h3>'.$restaurant["rname"].' Items</h3>';
             //SPIT OUT EACH GROUP
             foreach($restGroups as $restGroup){
                 $groupID=$restGroup["gid"];
                 $groupCategories = databaseController::getCategoryListByGroupId($groupID);
 
-                echo "<article data-groupID='".$groupID."' class='restaurantGroup'>";
+                echo "<article data-restaurant='".$restGroup['restaurantassociation']."' data-groupID='".$groupID."' class='restaurantGroup'>";
                     echo "<strong>".$restGroup['gname']."</strong><br />";
                     //SPIT OUT EACH CATEGORY
                     foreach($groupCategories as $groupCategory){
