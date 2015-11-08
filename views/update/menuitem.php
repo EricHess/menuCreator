@@ -31,7 +31,8 @@ $categoryInfo = databaseController::getCategoryList();
     <select class="groupSep">
         <option>Select A Group...</option>
         <?php foreach($groupInfo as $group) {
-            echo '<option value='.$group["gid"].'>'.$group["gname"].'</option>';
+            //NEED TO FILTER FROM RESTAURANT ASSOCIATIONS
+            echo '<option data-restaurantassociation="'.$group["restaurantassociation"].'" value='.$group["gid"].'>'.$group["gname"].'</option>';
         }; ?>
     </select>
 
@@ -39,7 +40,8 @@ $categoryInfo = databaseController::getCategoryList();
     <select class="categorySep">
         <option>Select A Category...</option>
         <?php foreach($categoryInfo as $category) {
-            echo '<option value='.$category["cid"].'>'.$category["cname"].'</option>';
+            //NEED TO FILTER FROM GROUP ASSOCIATION
+            echo '<option data-groupassociation="'.$category["groupassociation"].'" value='.$category["cid"].'>'.$category["cname"].'</option>';
         }; ?>
     </select>
 

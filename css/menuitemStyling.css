@@ -12,10 +12,32 @@ article.restaurantItems {
 article.restaurants.mainParent {
     padding: 40px 0;
     border-bottom: 1px solid;
+    display:flex;
+    flex-wrap:wrap;
 }
 
 .restaurantGroup,
 label[for="associatedGroupName"],#associatedGroupName, #associatedGroupName option,
 label[for="associatedCategoryName"],#associatedCategoryName, #associatedCategoryName option{
     display:none;
+}
+
+.restaurantItems{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.restaurantItems h3{
+    flex-basis:100%;
+}
+
+.mainDescription {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+}
+
+.iname.mainName, .deactivate{
+    order:-1;
+    flex-basis:25%;
+    margin-bottom:20px;
 }

@@ -33,7 +33,9 @@ $(function(){
 
     $("select.groupSep").change(function(){
         var value = $(this).val();
-        $(".restaurantItems article[data-groupid='"+value+"']").css({display:"block"});
+        $(".restaurantItems > article").css({display:"none"});
+        $(".restaurantItems > article[data-groupid='"+value+"']").css({display:"block"});
+        //NEED TO TURN ON THE CATEGORY SEP DROPDOWN WITH PROPER VALUES SHOWING
     });
 
 });
