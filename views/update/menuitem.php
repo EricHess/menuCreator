@@ -21,27 +21,27 @@ $categoryInfo = databaseController::getCategoryList();
     <h2>Welcome To The Restaurant Creator</h2>
     <p>From here you can update your categories to add menu items to. Simply click the edit button next to the desired field.</p>
 
-    <select class="restaurantSep">
+    <select class="restaurantSep" id="associatedRestaurantName">
         <option>Select A Restaurant...</option>
         <?php foreach($restaurantInfo as $restaurant) {
             echo '<option value='.$restaurant["rid"].'>'.$restaurant["rname"].'</option>';
         }; ?>
     </select>
 
-    <select class="groupSep">
+    <select class="groupSep" id="associatedGroupName">
         <option>Select A Group...</option>
         <?php foreach($groupInfo as $group) {
             //NEED TO FILTER FROM RESTAURANT ASSOCIATIONS
-            echo '<option data-restaurantassociation="'.$group["restaurantassociation"].'" value='.$group["gid"].'>'.$group["gname"].'</option>';
+            echo '<option style="display:none" data-restaurantassociation="'.$group["restaurantassociation"].'" value='.$group["gid"].'>'.$group["gname"].'</option>';
         }; ?>
     </select>
 
 
-    <select class="categorySep">
+    <select class="categorySep" id="associatedCategoryName">
         <option>Select A Category...</option>
         <?php foreach($categoryInfo as $category) {
             //NEED TO FILTER FROM GROUP ASSOCIATION
-            echo '<option data-groupassociation="'.$category["groupassociation"].'" value='.$category["cid"].'>'.$category["cname"].'</option>';
+            echo '<option  style="display:none"  data-groupassociation="'.$category["groupassociation"].'" value='.$category["cid"].'>'.$category["cname"].'</option>';
         }; ?>
     </select>
 

@@ -7,6 +7,7 @@
  */
 
 $restaurantInfo = databaseController::getRestaurantList();
+
 //TODO: Create edit functionality
 //TODO: Filter by restaurant
 //TODO: CLick on restaurant name first and then refresh the section with that restaurants groups
@@ -28,7 +29,11 @@ $restaurantInfo = databaseController::getRestaurantList();
 
             echo '<article class="restaurantCategories '.$restaurantName.'">';
             echo $restaurant["rname"]." Categories";
-            foreach($catGroups as $catGroup){ ?>
+            foreach($catGroups as $catGroup){
+                $groupInfo = databaseController::getGroupListByGID($catGroup["groupassociation"]);
+                ?>
+
+                <h2>Group: <?php echo $groupInfo[0]["gname"]?></h2>
                 <article class="restaurants mainParent"  data-dbName="menucategory"  data-idType="cid" data-neededId="<?php echo $catGroup["cid"]; ?>">
                     <div class="cname mainName"><input rel="cname" type="text" value="<?php echo $catGroup["cname"]?>" /></div>
                     <div class="cdescription mainDescription"><textarea rel="cdescription"><?php echo $catGroup["cdescription"]?></textarea></div>

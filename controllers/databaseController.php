@@ -78,6 +78,18 @@ class databaseController {
     }
 
 
+    public static function getGroupListByGID($gID){
+        $connect = databaseController::connectToDatabase();
+        $sql = "SELECT * from ehess84_ivars.menugroup WHERE gid =".$gID;
+        $arr = array();
+        $result = mysqli_query($connect,$sql);
+        while($row = mysqli_fetch_assoc($result)) {
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
+
     public static function getCategoryList(){
         $connect = databaseController::connectToDatabase();
         $sql = "SELECT * from ehess84_ivars.menucategory";
