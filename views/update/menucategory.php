@@ -8,9 +8,8 @@
 
 $restaurantInfo = databaseController::getRestaurantList();
 
-//TODO: Create edit functionality
 //TODO: Filter by restaurant
-//TODO: CLick on restaurant name first and then refresh the section with that restaurants groups
+//TODO: Filter by group
 ?>
 
 <link href="/menuCreator/css/menucategoryStyling.css" rel="stylesheet" />
@@ -32,9 +31,11 @@ $restaurantInfo = databaseController::getRestaurantList();
             foreach($catGroups as $catGroup){
                 $groupInfo = databaseController::getGroupListByGID($catGroup["groupassociation"]);
                 ?>
+                <?php  $catGroup["activeStatus"] == 1 ? $activeStatus = "active" : $activeStatus = "inactive"; ?>
+
 
                 <h2>Group: <?php echo $groupInfo[0]["gname"]?></h2>
-                <article class="restaurants mainParent"  data-dbName="menucategory"  data-idType="cid" data-neededId="<?php echo $catGroup["cid"]; ?>">
+                <article class="restaurants mainParent <?php echo $activeStatus; ?>"  data-dbName="menucategory"  data-idType="cid" data-neededId="<?php echo $catGroup["cid"]; ?>">
                     <div class="cname mainName"><input rel="cname" type="text" value="<?php echo $catGroup["cname"]?>" /></div>
                     <div class="cdescription mainDescription"><textarea rel="cdescription"><?php echo $catGroup["cdescription"]?></textarea></div>
                     <div class="deactivate">Active? <input  rel="activeStatus" <?php if($catGroup["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>

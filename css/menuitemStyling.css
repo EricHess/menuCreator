@@ -10,8 +10,6 @@ article.restaurantItems {
 }
 
 article.restaurants.mainParent {
-    padding: 40px 0;
-    border-bottom: 1px solid;
     display:flex;
     flex-wrap:wrap;
 }
@@ -41,3 +39,32 @@ label[for="associatedCategoryName"],#associatedCategoryName, #associatedCategory
     flex-basis:25%;
     margin-bottom:20px;
 }
+
+
+/*STYLING TO MAKE IT LOOK LIKE FRONT END*/
+.restaurantGroup > article{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.restaurantGroup article strong{
+    font-size: 1.3rem;
+    border-bottom: 1px solid #999;
+    padding-bottom: 7px;
+    display: flex;
+    justify-content: center;
+    flex-basis: 100%;
+    margin-bottom: 40px;
+}
+
+.restaurantGroup > article .mainParent{
+    display: flex;
+    flex-basis: 40%;
+    flex-wrap: wrap;
+    border: 1px solid;
+    margin: 5px;
+    padding: 15px;
+}
+
+
+
