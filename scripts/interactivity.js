@@ -8,6 +8,12 @@ $(function(){
         $('nav.'+itemToShow).slideToggle();
     });
 
+    $(".deactivate input[type='checkbox']").click(function(){
+
+        this.checked ? $(this).parent().parent().removeClass("inactive").addClass("active") :  $(this).parent().parent().removeClass("active").addClass("inactive")
+
+    });
+
     $("select#associatedRestaurantName").change(function(){
         var value = $(this).val(),
         groupNameDropdown = $("select#associatedGroupName");
@@ -33,8 +39,11 @@ $(function(){
 
     $("select.groupSep").change(function(){
         var value = $(this).val();
-        $(".restaurantItems > article").css({display:"none"});
-        $(".restaurantItems > article[data-groupid='"+value+"']").css({display:"block"});
+        var restId = $(this).find(':selected').data('restaurantassociation');
+
+        $(".restaurantItems > article, .restaurantCategories > article").css({display:"none"});
+        $(".restaurantCategories[data-restid='"+restId+"']").css({"display":"block"});
+        $(".restaurantItems > article[data-groupid='"+value+"'], .restaurantCategories[data-restid='"+restId+"'] > article[data-associatedgroup='"+value+"'").css({display:"block"});
         //NEED TO TURN ON THE CATEGORY SEP DROPDOWN WITH PROPER VALUES SHOWING
     });
 

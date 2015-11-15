@@ -6,6 +6,8 @@ article.restaurantCategories {
     padding: 2rem;
     border: 1px solid;
     margin: 5px;
+    display:none;
+
 }
 
 article.restaurants.mainParent {
