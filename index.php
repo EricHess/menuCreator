@@ -13,6 +13,9 @@ require('./controllers/databaseController.php');
 
 //Place a check for the API Key and kill if it is not there.
 
+session_start();
+
+
 ?>
 <!doctype html>
 <html>
@@ -25,7 +28,13 @@ require('./controllers/databaseController.php');
 <link href="/menuCreator/css/indexstyles.css" rel="stylesheet"/>
 </head>
 
+
 <body>
+
+<?php
+if($_SESSION["loggedin"] == "loggedin"){
+?>
+
 <nav class="mainSiteNav">
     <h2 class="addNew" data-itemToShow="addNew">Add New Items</h2>
     <h2 class="updateItem" data-itemToShow="updateItem">Update Existing Items</h2>
@@ -53,6 +62,10 @@ if(pageController::createPath() === false){
     include './views/404.php';
 }else{
     include pageController::createPath().'';
+}
+
+}else{
+   echo "You should not be here. How did you get here?";
 }
 ?>
 
