@@ -8,9 +8,27 @@
 
 require("databaseController.php");
 
-updateController::updateItem($_POST);
+if($_POST["changeTo"]){
+    updateController::changeItem($_POST);
+}else{
+    updateController::updateItem($_POST);
+}
+
+
 
 class updateController {
+
+    public static function changeItem($updatePackage){
+
+        $connect = databaseController::connectToDatabase();
+        $changeTo = mysqli_real_escape_string($connect, $updatePackage['changeTo']);
+        $db = mysqli_real_escape_string($connect, $updatePackage['db']);
+        $id = mysqli_real_escape_string($connect, $updatePackage['id']);
+        $idType = mysqli_real_escape_string($connect, $updatePackage['idType']);
+        $sqlStatement = "UPDATE ".$db." SET ".$idType."='".$text."' WHERE ".$idType."=".$id;
+        mysqli_query($connect,$sqlStatement);
+
+    }
 
     public static function updateItem($updatePackage){
 

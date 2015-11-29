@@ -89,6 +89,16 @@ $categoryInfo = databaseController::getCategoryList();
                                     <div class="item_order mainDescription">Item Order: <input type="text" rel="item_order" value="<?php echo $menuItem["item_order"]?>" /></div>
                                     <div class="deactivate">Active? <input  id="deactivate" rel="activeStatus" <?php if($menuItem["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
                                     <div class="deleteMe"><button id="delete" rel="del" type="checkbox" data-genus="menuitem">Delete This Menu Item</button></div>
+                                    <div class="changeCategory">Change parent category to:
+                                        <select id="changeCategory">
+                                            <option value="">Select One...</option>
+                                        <?php
+                                            foreach($groupCategories as $groupCategory){
+                                                echo "<option rel='categoryassociation' value='".$groupCategory['cid']."'>".$groupCategory['cname']."</option>";
+                                            }
+                                        ?>
+                                        </select>
+                                    </div>
                                 </article>
 
                             <?php } ?>

@@ -44,6 +44,14 @@ formSubmits.prototype.bindEvents = function(){
             var check = window.confirm("Are you sure you want to delete this item? \n WARNING: This will delete ALL items associated with this item.");
             check === true ? formSubmits.prototype.deleteItem(dbName, restaurantID, IDType, genus, removalElement) : false;
         })
+        .on("change", ".updateContainer select#changeCategory", function(){
+            var restaurantID = $(this).parents(".mainParent").attr("data-neededid");
+            var IDType = $(this).parents(".mainParent").attr("data-idType");
+            var dbName = $(this).parents(".mainParent").attr("data-dbName");
+            var newID = $(this).val();
+            var association = $(this).attr("rel");
+            formSubmits.prototype.changeItem(association, dbName, restaurantID, IDType, newID)
+        })
 
 };
 
@@ -74,6 +82,19 @@ formSubmits.prototype.updateItem = function(updateType, updateDB, updateText, up
 
     })
 };
+
+
+formSubmits.prototype.changeItem = function(association, changeDB, changeNeededID, IDType, changeToID){
+    $.ajax({
+        type:'post',
+        url:'/menuCreator/controllers/updateController.php',
+        data:{"association": association, "changeTo": changeToID, "db":changeDB, "id":changeNeededID, "idType":IDType},
+        success: function(){
+        }
+
+    })
+};
+
 
 
 formSubmits.prototype.deleteItem = function(updateDB, updatingID, IDType, genus, el){
