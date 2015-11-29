@@ -35,3 +35,11 @@ nav.mainSiteNav h2{
 .inactive{
     background: #da5448;
 }
+
+.active .deleteMe{
+    display:none;
+}
+
+.inactive .deleteMe{
+    display:block;
+}

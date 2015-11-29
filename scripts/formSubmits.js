@@ -35,13 +35,14 @@ formSubmits.prototype.bindEvents = function(){
                 formSubmits.prototype.updateItem(nameOrDescription, dbName, 1, restaurantID, IDType)
             : formSubmits.prototype.updateItem(nameOrDescription, dbName, 0, restaurantID, IDType);
         })
-        .on("click", ".updateContainer input#delete", function(){
+        .on("click", ".updateContainer button#delete", function(){
             var restaurantID = $(this).parents(".mainParent").attr("data-neededid");
             var IDType = $(this).parents(".mainParent").attr("data-idType");
             var dbName = $(this).parents(".mainParent").attr("data-dbName");
             var genus = $(this).data("genus");
             var removalElement = $(this).parent().parent();
-            formSubmits.prototype.deleteItem(dbName, restaurantID, IDType, genus, removalElement);
+            var check = window.confirm("Are you sure you want to delete this item? \n WARNING: This will delete ALL items associated with this item.");
+            check === true ? formSubmits.prototype.deleteItem(dbName, restaurantID, IDType, genus, removalElement) : false;
         })
 
 };
@@ -56,7 +57,7 @@ formSubmits.prototype.saveAndDelegate = function(delegate, element){
             if(delegate === "close"){
                 window.location = "/menuCreator";
             }else if(delegate ==="add"){
-                location.reload();
+                $("input[type='text'], textarea").val("").text("");
             }
 
         }
@@ -68,8 +69,9 @@ formSubmits.prototype.updateItem = function(updateType, updateDB, updateText, up
         type:'post',
         url:'/menuCreator/controllers/updateController.php',
         data:{"type": updateType, "db":updateDB, "text": updateText, "id":updatingID, "idType":IDType},
-        success: function(data){
+        success: function(){
         }
+
     })
 };
 
@@ -81,7 +83,6 @@ formSubmits.prototype.deleteItem = function(updateDB, updatingID, IDType, genus,
         data:{"db":updateDB, "id":updatingID, "idType":IDType, "genus":genus},
         success: function(){
             el.remove();
-            alert(genus+" deleted");
         }
     })
 };

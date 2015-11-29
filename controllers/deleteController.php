@@ -16,16 +16,19 @@ require("databaseController.php");
 */
 
 if($_POST["genus"] == "restaurant"){
-
-    //TODO: Delete Category, Group, Items with restaurantassociation of the provided rid
+    deleteController::deleteAllItems($_POST, "restaurantassociation");
+    deleteController::deleteAllGroups($_POST, "restaurantassociation");
+    deleteController::deleteAllCategories($_POST, "restaurantassociation");
+    deleteController::deleteItem($_POST);
 
 }elseif($_POST["genus"] == "category") {
-
-    //TODO: Delete Group, Items with categoryassociation of the provided cid
+    deleteController::deleteAllItems($_POST, "categoryassociation");
+    deleteController::deleteAllGroups($_POST, "categoryassociation");
+    deleteController::deleteItem($_POST);
 
 }elseif($_POST["genus"] == "group") {
-
-    //TODO: Delete Items with groupassociation of the provided gid
+    deleteController::deleteAllItems($_POST, "groupassociation");
+    deleteController::deleteItem($_POST);
 
 }else{
     //If item, delete item
@@ -33,6 +36,39 @@ if($_POST["genus"] == "restaurant"){
 }
 
 class deleteController {
+
+    public static function deleteAllCategories($updatePackage, $association){
+
+        $connect = databaseController::connectToDatabase();
+        $id = mysqli_real_escape_string($connect, $updatePackage['id']);
+        $sqlStatement = "DELETE FROM menucategory WHERE ".$association."= ".$id;
+        mysqli_query($connect,$sqlStatement);
+        echo 'deleted';
+
+    }
+
+
+    public static function deleteAllGroups($updatePackage, $association){
+
+        $connect = databaseController::connectToDatabase();
+        $id = mysqli_real_escape_string($connect, $updatePackage['id']);
+        $sqlStatement = "DELETE FROM menugroup WHERE ".$association."= ".$id;
+        mysqli_query($connect,$sqlStatement);
+        echo 'deleted';
+
+    }
+
+
+    public static function deleteAllItems($updatePackage, $association){
+
+        $connect = databaseController::connectToDatabase();
+        $id = mysqli_real_escape_string($connect, $updatePackage['id']);
+        $sqlStatement = "DELETE FROM menuitem WHERE ".$association."= ".$id;
+        mysqli_query($connect,$sqlStatement);
+        echo 'deleted';
+
+    }
+
 
     public static function deleteItem($updatePackage){
 

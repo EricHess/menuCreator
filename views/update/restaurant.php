@@ -27,8 +27,8 @@ $restaurantInfo = databaseController::getRestaurantList();
             <h2><?php echo $restaurant["rname"]?></h2>
             <div class="rname mainName"><input rel="rname" type="text" value="<?php echo $restaurant["rname"]?>" /></div>
             <div class="rdescription mainDescription"><textarea rel="rdescription"><?php echo $restaurant["rdescription"]?></textarea></div>
-            <div class="deactivate">Active? <input  rel="activeStatus" <?php if($restaurant["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
-
+            <div class="deactivate">Active? <input id="deactivate" rel="activeStatus" <?php if($restaurant["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
+            <div class="deleteMe"><button id="delete" rel="del" type="checkbox" data-genus="restaurant">Delete This Restaurant</button></div>
         </article>
     <?php }?>
     </section>
