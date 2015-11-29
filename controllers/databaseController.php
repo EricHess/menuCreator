@@ -105,7 +105,7 @@ class databaseController {
 
     public static function getCategoryListByRestaurantId($restaurantID){
         $connect = databaseController::connectToDatabase();
-        $sql = "SELECT * from ehess84_ivars.menucategory WHERE restaurantassociation =".$restaurantID;
+        $sql = "SELECT * from ehess84_ivars.menucategory WHERE restaurantassociation =".$restaurantID." ORDER BY category_order desc";
         $arr = array();
         $result = mysqli_query($connect,$sql);
         while($row = mysqli_fetch_assoc($result)) {

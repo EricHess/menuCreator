@@ -87,7 +87,8 @@ $categoryInfo = databaseController::getCategoryList();
                                     <div class="idescription mainDescription">Item Description: <textarea rel="idescription"><?php echo $menuItem["idescription"]?></textarea></div>
                                     <div class="iprice mainDescription">Item Price: <input type="text" rel="iprice" value="<?php echo $menuItem["iprice"]?>" /></div>
                                     <div class="item_order mainDescription">Item Order: <input type="text" rel="item_order" value="<?php echo $menuItem["item_order"]?>" /></div>
-                                    <div class="deactivate">Active? <input  rel="activeStatus" <?php if($menuItem["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
+                                    <div class="deactivate">Active? <input  id="deactivate" rel="activeStatus" <?php if($menuItem["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
+                                    <div class="deleteMe">Delete? <input id="delete" rel="del" type="checkbox" data-genus="menuitem" /></div>
                                 </article>
 
                             <?php } ?>

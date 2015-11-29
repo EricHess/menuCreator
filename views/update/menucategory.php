@@ -52,6 +52,7 @@ $groupInfo = databaseController::getGroupList();
                 <article data-associatedgroup="<?php echo $catGroup['groupassociation']; ?>" class="restaurants mainParent <?php echo $activeStatus; ?>"  data-dbName="menucategory"  data-idType="cid" data-neededId="<?php echo $catGroup["cid"]; ?>">
                     <div class="cname mainName"><input rel="cname" type="text" value="<?php echo $catGroup["cname"]?>" /></div>
                     <div class="cdescription mainDescription"><textarea rel="cdescription"><?php echo $catGroup["cdescription"]?></textarea></div>
+                    <div class="category_order mainDescription">Item Order: <input type="text" rel="category_order" value="<?php echo $catGroup["category_order"]?>" /></div>
                     <div class="deactivate">Active? <input  rel="activeStatus" <?php if($catGroup["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
 
                 </article>

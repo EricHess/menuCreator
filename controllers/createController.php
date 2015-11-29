@@ -44,7 +44,7 @@ class createController {
         $categoryAssociation = $createPackage['associatedCategoryName'];
         $name = mysqli_real_escape_string($connect, $createPackage['menuItemName']);
         $description = mysqli_real_escape_string($connect, $createPackage['menuItemDescription']);
-        $price = mysqli_real_escape_string($connect, $createPackage['pricingOption1']);
+        $price = mysqli_real_escape_string($connect, $createPackage['pricingOption']);
         $sqlStatement = "INSERT INTO `ehess84_ivars`.`menuitem` (`iid`, `restaurantassociation`, `groupassociation`,  `categoryassociation`, `iname`, `idescription`, `iprice`) VALUES ('','".$restaurantAssociation."','".$groupAssociation."','".$categoryAssociation."','".$name."','".$description."','".$price."')";
         mysqli_query($connect,$sqlStatement);
 

@@ -24,7 +24,7 @@ formSubmits.prototype.bindEvents = function(){
             formSubmits.prototype.updateItem(nameOrDescription, dbName, newText, restaurantID, IDType);
         })
 
-        .on("click", ".updateContainer input[type='checkbox']", function(){
+        .on("click", ".updateContainer input#deactivate", function(){
             var restaurantID = $(this).parents(".mainParent").attr("data-neededid");
             var IDType = $(this).parents(".mainParent").attr("data-idType");
             var dbName = $(this).parents(".mainParent").attr("data-dbName");
@@ -34,6 +34,14 @@ formSubmits.prototype.bindEvents = function(){
             $(this)[0].checked ?
                 formSubmits.prototype.updateItem(nameOrDescription, dbName, 1, restaurantID, IDType)
             : formSubmits.prototype.updateItem(nameOrDescription, dbName, 0, restaurantID, IDType);
+        })
+        .on("click", ".updateContainer input#delete", function(){
+            var restaurantID = $(this).parents(".mainParent").attr("data-neededid");
+            var IDType = $(this).parents(".mainParent").attr("data-idType");
+            var dbName = $(this).parents(".mainParent").attr("data-dbName");
+            var genus = $(this).data("genus");
+            var removalElement = $(this).parent().parent();
+            formSubmits.prototype.deleteItem(dbName, restaurantID, IDType, genus, removalElement);
         })
 
 };
@@ -61,7 +69,19 @@ formSubmits.prototype.updateItem = function(updateType, updateDB, updateText, up
         url:'/menuCreator/controllers/updateController.php',
         data:{"type": updateType, "db":updateDB, "text": updateText, "id":updatingID, "idType":IDType},
         success: function(data){
-            console.log(data)
+        }
+    })
+};
+
+
+formSubmits.prototype.deleteItem = function(updateDB, updatingID, IDType, genus, el){
+    $.ajax({
+        type:'post',
+        url:'/menuCreator/controllers/deleteController.php',
+        data:{"db":updateDB, "id":updatingID, "idType":IDType, "genus":genus},
+        success: function(){
+            el.remove();
+            alert(genus+" deleted");
         }
     })
 };
