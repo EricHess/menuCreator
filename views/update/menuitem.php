@@ -90,7 +90,7 @@ $categoryInfo = databaseController::getCategoryList();
                                     <div class="deactivate">Active? <input  id="deactivate" rel="activeStatus" <?php if($menuItem["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
                                     <div class="deleteMe"><button id="delete" rel="del" type="checkbox" data-genus="menuitem">Delete This Menu Item</button></div>
                                     <div class="changeCategory">Change parent category to:
-                                        <select id="changeCategory">
+                                        <select id="changeCategory" rel="categoryassociation">
                                             <option value="">Select One...</option>
                                         <?php
                                             foreach($groupCategories as $groupCategory){

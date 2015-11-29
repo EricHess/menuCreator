@@ -22,10 +22,12 @@ class updateController {
 
         $connect = databaseController::connectToDatabase();
         $changeTo = mysqli_real_escape_string($connect, $updatePackage['changeTo']);
+        $association = mysqli_real_escape_string($connect, $updatePackage['association']);
         $db = mysqli_real_escape_string($connect, $updatePackage['db']);
         $id = mysqli_real_escape_string($connect, $updatePackage['id']);
         $idType = mysqli_real_escape_string($connect, $updatePackage['idType']);
-        $sqlStatement = "UPDATE ".$db." SET ".$idType."='".$text."' WHERE ".$idType."=".$id;
+        $sqlStatement = "UPDATE ".$db." SET ".$association."='".$changeTo."' WHERE ".$idType."=".$id;
+        echo $sqlStatement;
         mysqli_query($connect,$sqlStatement);
 
     }
