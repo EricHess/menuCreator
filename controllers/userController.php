@@ -16,7 +16,7 @@ class userController {
         $apikey = $usertest["apikey"];
 
         $connect = databaseController::connectToDatabase();
-        $sqlStatement = "SELECT * from ehess84_ivars.menu_users WHERE username='".$username."' AND apikey='".$apikey."'";
+        $sqlStatement = "SELECT * from ivars235_joomla.menu_users WHERE username='".$username."' AND apikey='".$apikey."'";
         $arr = array();
         $result = mysqli_query($connect,$sqlStatement);
         while($row = mysqli_fetch_assoc($result)) {

@@ -33,6 +33,7 @@ $restaurantInfo = databaseController::getRestaurantList();
                     <article class="restaurants mainParent <?php echo $activeStatus; ?>"  data-dbName="menugroup"  data-idType="gid" data-neededId="<?php echo $restGroup["gid"]; ?>">
                         <div class="gname mainName"><input rel="gname" type="text" value="<?php echo $restGroup["gname"]?>" /></div>
                         <div class="gdescription mainDescription"><textarea rel="gdescription"><?php echo $restGroup["gdescription"]?></textarea></div>
+                        <div class="group_order mainDescription">Item Order: <input type="text" rel="group_order" value="<?php echo $restGroup["group_order"]?>" /></div>
                         <div class="deactivate">Active? <input  id="deactivate" rel="activeStatus" <?php if($restGroup["activeStatus"] == 1) echo "checked = checked"; ?> type="checkbox" /></div>
                         <div class="deleteMe"><button id="delete" rel="del" type="checkbox" data-genus="menugroup">Delete This Menu Group</button></div>
 

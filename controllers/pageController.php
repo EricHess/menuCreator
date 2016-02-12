@@ -24,10 +24,10 @@ class pageController {
 
     public static function createPath(){
         $directPath = './views/';
-
+        $params = urlController::returnURLParameters();
         //CHECK HERE IF IT BREAKS IN PROD THE THREE COULD BE A TWO
         for($i = 2; $i < urlController::urlParametersCount(); $i++ ){
-            $directPath .= urlController::returnURLParameters()[$i];
+            $directPath .= $params[$i];
             $directPath .= '/';
 
         }

@@ -7,7 +7,7 @@
  * Config object for the SmallBatchWebsites server
  */
 
-$db_name = "ehess84_menucreator";
+$db_name = "ivars235_joomla";
 $db_host = "localhost";
-$db_username = "ehess84_menu";
+$db_username = "ivars235_menu";
 $db_password = "slamclam!";
