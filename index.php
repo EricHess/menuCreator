@@ -21,6 +21,7 @@ session_start();
 <html>
 
 <head>
+    <meta charset="UTF-8">
 <script src="/menuCreator/scripts/jquery.js"></script>
 <script src="/menuCreator/scripts/formSubmits.js"></script>
 <script src="/menuCreator/scripts/interactivity.js"></script>
